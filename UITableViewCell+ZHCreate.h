@@ -53,6 +53,9 @@
 /** cell model */
 @property (nonatomic, strong) id model;
 
+/** indexPath */
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
 /**
  *  配置数据
  */

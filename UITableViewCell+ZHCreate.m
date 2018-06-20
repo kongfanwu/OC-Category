@@ -21,6 +21,17 @@ NSString const *ZHCreateModelKey = @"model";
     return objc_getAssociatedObject(self, &ZHCreateModelKey);
 }
 
+NSString const *ZHCreateIndexPathKey = @"indexPath";
+- (void)setIndexPath:(NSIndexPath *)indexPath {
+    [self willChangeValueForKey:@"indexPath"]; // KVO
+    objc_setAssociatedObject(self, &ZHCreateIndexPathKey, indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self didChangeValueForKey:@"indexPath"]; // KVO
+}
+
+- (NSIndexPath *)indexPath {
+    return objc_getAssociatedObject(self, &ZHCreateIndexPathKey);
+}
+
 + (__kindof instancetype)createCellWithTable:(UITableView *)tableView {
     return [self createCellWithTable:tableView identifier:NSStringFromClass(self.class)];
 }
